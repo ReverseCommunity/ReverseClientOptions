@@ -1,6 +1,6 @@
 /**
  * @name ReverseClientOptions
- * @description Dodatkowe opcje dla Administracji serwera Reverse Community.
+ * @description Dodatkowe opcje dla Administracji serwera Among Us Reverse.
  * @website https://github.com/Benio101/ReverseClientOptions
  * @github https://github.com/Benio101/ReverseClientOptions
  * @github_raw https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js
@@ -22,7 +22,7 @@ module.exports = (() =>
 		info:
 		{
 			name: 'ReverseClientOptions',
-			description: 'Dodatkowe opcje dla Administracji serwera Reverse Community.',
+			description: 'Dodatkowe opcje dla Administracji serwera Among Us Reverse.',
 			website: 'https://github.com/Benio101/ReverseClientOptions',
 			github: 'https://github.com/Benio101/ReverseClientOptions',
 			github_raw: 'https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js',
@@ -37,7 +37,8 @@ module.exports = (() =>
 		// added, fixed, improved
 		changeLog:
 		{
-			added: {'Moderator': 'Dodano opcję sprawdzania statystyk przez moderator+'},
+			added: {'ReverseCraft': 'Dodano opcję przerzucania ludzi na kanał Craft Supportu'},
+			improved: {'Przenoszenie na kanały': 'Poprawiono czytelność opcji związanych z przenoszeniem na kanały'},
 		},
 
 		// milliseconds
@@ -185,30 +186,50 @@ module.exports = (() =>
 		}
 
 		#user-context-${config.info.name + '-Kary-UserContextMenu--twarn'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-1d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-2d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-3d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-4d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-5d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-6d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-7d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-8d'}
 		{
 			color: #E0E040;
 		}
 		#user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-1d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-2d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-3d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-4d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-5d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-6d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-7d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--tmute-8d'}.da-focused
 		{
 			background: #E0E04040;
 		}
 
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-1d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-2d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-3d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-4d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-5d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-6d'},
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-7d'},
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-8d'}
 		{
 			color: #E09040;
 		}
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-1d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-2d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-3d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-4d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-5d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-6d'}.da-focused,
+		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-7d'}.da-focused,
 		#user-context-${config.info.name + '-Kary-UserContextMenu--vmute-8d'}.da-focused
 		{
 			background: #E0904040;
@@ -1489,7 +1510,7 @@ module.exports = (() =>
 				let contextMenuItems = [];
 				let menuEntries = [];
 
-				if (BDFDB.UserUtils.can('BAN_MEMBERS')) {
+				if (BDFDB.UserUtils.can('ADMINISTRATOR')) {
 					menuEntries.push(
 						BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 							label: 'Sprawdź statystyki',
@@ -1641,6 +1662,51 @@ module.exports = (() =>
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (tekstowy) na 1 dni',
+									id: 'tmute-1d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (tekstowy) — 1 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-tmute-1d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-tmute-1d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.execute_command(`/tmute ${user.id} 1d ${reason}`);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-tmute-1d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									label: 'Mute (tekstowy) na 2 dni',
 									id: 'tmute-2d',
 									action: _ => {
@@ -1686,6 +1752,51 @@ module.exports = (() =>
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (tekstowy) na 3 dni',
+									id: 'tmute-3d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (tekstowy) — 3 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-tmute-3d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-tmute-3d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.execute_command(`/tmute ${user.id} 3d ${reason}`);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-tmute-3d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									label: 'Mute (tekstowy) na 4 dni',
 									id: 'tmute-4d',
 									action: _ => {
@@ -1728,6 +1839,141 @@ module.exports = (() =>
 										);
 
 										setTimeout(function(){document.getElementById(config.info.name + '-tmute-4d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (tekstowy) na 5 dni',
+									id: 'tmute-5d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (tekstowy) — 5 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-tmute-5d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-tmute-5d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.execute_command(`/tmute ${user.id} 5d ${reason}`);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-tmute-5d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (tekstowy) na 6 dni',
+									id: 'tmute-6d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (tekstowy) — 6 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-tmute-6d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-tmute-6d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.execute_command(`/tmute ${user.id} 6d ${reason}`);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-tmute-6d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (tekstowy) na 7 dni',
+									id: 'tmute-7d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (tekstowy) — 7 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-tmute-7d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-tmute-7d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.execute_command(`/tmute ${user.id} 7d ${reason}`);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-tmute-7d-reason').focus();}, 0);
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
@@ -1822,6 +2068,51 @@ module.exports = (() =>
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (głosowy) na 1 dni',
+									id: 'vmute-1d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (głosowy) — 1 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-vmute-1d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-vmute-1d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.vmute(user.id, 1, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-vmute-1d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									label: 'Mute (głosowy) na 2 dni',
 									id: 'vmute-2d',
 									action: _ => {
@@ -1867,6 +2158,51 @@ module.exports = (() =>
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (głosowy) na 3 dni',
+									id: 'vmute-3d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (głosowy) — 3 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-vmute-3d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-vmute-3d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.vmute(user.id, 3, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-vmute-3d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									label: 'Mute (głosowy) na 4 dni',
 									id: 'vmute-4d',
 									action: _ => {
@@ -1909,6 +2245,141 @@ module.exports = (() =>
 										);
 
 										setTimeout(function(){document.getElementById(config.info.name + '-vmute-4d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (głosowy) na 5 dni',
+									id: 'vmute-5d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (głosowy) — 5 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-vmute-5d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-vmute-5d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.vmute(user.id, 5, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-vmute-5d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (głosowy) na 6 dni',
+									id: 'vmute-6d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (głosowy) — 6 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-vmute-6d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-vmute-6d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.vmute(user.id, 6, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-vmute-6d-reason').focus();}, 0);
+									}
+								}),
+								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									label: 'Mute (głosowy) na 7 dni',
+									id: 'vmute-7d',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Mute (głosowy) — 7 dni`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód muta.',
+													value: '',
+													placeholder: 'Powód muta',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-vmute-7d-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód muta.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Mute',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-vmute-7d-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.vmute(user.id, 7, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-vmute-7d-reason').focus();}, 0);
 									}
 								}),
 								BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
