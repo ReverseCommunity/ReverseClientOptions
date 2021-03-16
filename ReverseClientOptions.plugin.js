@@ -1,13 +1,14 @@
 /**
- * @name ReverseClientOptions
+* @name ReverseClientOptions
+  * @name ReverseClientOptions
  * @description Dodatkowe opcje dla Administracji serwera Reverse Community.
- * @website https://github.com/Benio101/ReverseClientOptions
- * @github https://github.com/Benio101/ReverseClientOptions
- * @github_raw https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js
- * @updateUrl https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js
- * @source https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js
- * @author Benio
- * @authorId 231850998279176193
+ * @website https://github.com/ReverseCommunity/ReverseClientOptions
+ * @github https://github.com/ReverseCommunity/ReverseClientOptions
+ * @github_raw https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6
+ * @updateUrl https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6
+ * @source https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6
+ * @author Benio, matiqo15, OLO
+ * @authorId 231850998279176193, 490431174322159626, 543819194656096276
  * @invite reversecommunity
  */
 
@@ -23,13 +24,13 @@ module.exports = (() =>
 		{
 			name: 'ReverseClientOptions',
 			description: 'Dodatkowe opcje dla Administracji serwera Reverse Community.',
-			website: 'https://github.com/Benio101/ReverseClientOptions',
-			github: 'https://github.com/Benio101/ReverseClientOptions',
-			github_raw: 'https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js',
-			updateUrl: 'https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js',
-			source: 'https://raw.githubusercontent.com/Benio101/ReverseClientOptions/main/ReverseClientOptions.plugin.js',
-			author: 'Benio',
-			authorId: '231850998279176193',
+			website: 'https://github.com/ReverseCommunity/ReverseClientOptions',
+			github: 'https://github.com/ReverseCommunity/ReverseClientOptions',
+			github_raw: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6',
+			updateUrl: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6',
+			source: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js?token=AO3XX3XU25SYPZNTKRRTOLTAKB2T6',
+			author: 'Benio, matiqo15, OLO',
+			authorId: '231850998279176193, 490431174322159626, 543819194656096276',
 			invite: 'reversecommunity',
 			version: '3.1.4',
 		},
