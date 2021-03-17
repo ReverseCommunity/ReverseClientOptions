@@ -1787,7 +1787,7 @@ module.exports = (() =>
 												confirmText: 'Paula',
 												cancelText: 'Anuluj',
 												onConfirm: function() {
-													if (GBDFDB.UserUtils.can('BAN_MEMBERS')) 
+													if (BDFDB.UserUtils.can('BAN_MEMBERS')) 
 														tasks.execute_command(`/paula ${user.id}`);
 													else 
 													{
