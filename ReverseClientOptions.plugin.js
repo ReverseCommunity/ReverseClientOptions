@@ -493,6 +493,13 @@ module.exports = (() =>
 		tasks.execute_command(`/vwarn ${user_id} ${reason}`);
 	}
 
+	tasks.ban = function(user_id, reason)
+	{
+		if (GBDFDB.UserUtils.can('BAN_MEMBERS'))
+			task.execute_command(`/ban ${user_id} ${reason}`)
+		else task.send_message(channels.zgłoszenia, `${user_id} ${reason}`)
+	}
+
 	tasks.note = function(user_id, reason)
 	{
 		tasks.execute_command(`/note ${user_id} ${reason}`);
@@ -1762,13 +1769,7 @@ module.exports = (() =>
 														BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
 														return;
 													}
-
-													if (GBDFDB.UserUtils.can('BAN_MEMBERS')) 
-														tasks.execute_command(`/ban ${user.id} ${reason}`);
-													else if (!GBDFDB.UserUtils.can('BAN_MEMBERS')) 
-													{
-														task.send_message(channels.zgłoszenia, `${user.id} ${reason}`)
-													}
+														tasks.ban(user.id, reason)
 												},
 											}
 										);
