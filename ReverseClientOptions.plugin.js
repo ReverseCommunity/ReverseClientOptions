@@ -38,7 +38,7 @@ module.exports = (() =>
 		// added, fixed, improved
 		changeLog:
 		{
-			improved: {'Kary': 'Poprawiono czytelność opcji'},
+			fixed: {'Update': 'Naprawiono automatyczne aktualizacje'},
 		},
 
 		// milliseconds
@@ -434,13 +434,13 @@ module.exports = (() =>
 	actions.send_message = function(channel_id, message)
 	{
 		log(`action.send_message('${channel_id}', '${message}');`);
-		ZLibrary.DiscordModules.MessageActions.sendMessage(channel_id, {content: message});
+		ZeresPluginLibrary.DiscordModules.MessageActions.sendMessage(channel_id, {content: message});
 	}
 	
 	actions.delete_message = function(channel_id, message_id)
 	{
 		log(`action.delete_message('${channel_id}', '${message_id}');`);
-		ZLibrary.DiscordModules.MessageActions.deleteMessage(channel_id, message_id);
+		ZeresPluginLibrary.DiscordModules.MessageActions.deleteMessage(channel_id, message_id);
 	}
 
 	actions.execute_command = function(command)
@@ -650,7 +650,7 @@ module.exports = (() =>
 
 			update()
 			{
-				ZLibrary.PluginUpdater.checkForUpdate(config.info.name, config.info.version, config.info.updateUrl);
+				ZeresPluginLibrary.PluginUpdater.checkForUpdate(config.info.name, config.info.version, config.info.updateUrl);
 			}
 
 			onMessageOptionToolbar(e)
