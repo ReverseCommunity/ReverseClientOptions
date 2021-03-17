@@ -1728,52 +1728,51 @@
 										 setTimeout(function(){document.getElementById(config.info.name + '-vmute-reason').focus();}, 0);
 									 }
 								 }),
-								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-mutes-and-bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-									 label: 'Ban miękki',
-									 id: 'sban',
-									 action: _ => {
-										 BdApi.showConfirmationModal(
-											 `Ban miękki`, action_popup__get_user_header(user.id, user.tag).concat([
-												 BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
-													 autoFocus: true,
-													 errorMessage: 'Musisz podać powód bana.',
-													 value: '',
-													 placeholder: 'Czas i powód bana',
-													 size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
-													 maxLength: 1024,
-													 id: config.info.name + '-sban-reason',
-													 success: false,
-													 onChange: (value, instance) => {
-														 if (value.length) {
-															 instance.props.errorMessage = null;
-															 instance.props.success = true;
-														 } else {
-															 instance.props.errorMessage = 'Musisz podać powód bana.';
-															 instance.props.success = false;
-														 }
-													 },
-												 }),
-											 ]), {
-												 danger: true,
-												 confirmText: 'Ban',
-												 cancelText: 'Anuluj',
-												 onConfirm: function() {
-													 let reason = document.getElementById(config.info.name + '-sban-reason').value;
-													 if (!reason)
-													 {
-														 BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
-														 return;
-													 }
- 
-													 tasks.sban(user.id, reason);
-												 },
-											 }
-										 );
- 
-										 setTimeout(function(){document.getElementById(config.info.name + '-sban-reason').focus();}, 0);
-									 }
-								 }),
+									label: 'Ban miękki',
+									id: 'sban',
+									action: _ => {
+										BdApi.showConfirmationModal(
+											`Ban miękki`, action_popup__get_user_header(user.id, user.tag).concat([
+												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													autoFocus: true,
+													errorMessage: 'Musisz podać powód bana.',
+													value: '',
+													placeholder: 'Czas i powód bana',
+													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													maxLength: 1024,
+													id: config.info.name + '-sban-reason',
+													success: false,
+													onChange: (value, instance) => {
+														if (value.length) {
+															instance.props.errorMessage = null;
+															instance.props.success = true;
+														} else {
+															instance.props.errorMessage = 'Musisz podać powód bana.';
+															instance.props.success = false;
+														}
+													},
+												}),
+											]), {
+												danger: true,
+												confirmText: 'Ban',
+												cancelText: 'Anuluj',
+												onConfirm: function() {
+													let reason = document.getElementById(config.info.name + '-sban-reason').value;
+													if (!reason)
+													{
+														BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
+														return;
+													}
+
+													tasks.sban(user.id, reason);
+												},
+											}
+										);
+
+										setTimeout(function(){document.getElementById(config.info.name + '-ban-reason').focus();}, 0);
+									}
+								}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									 label: 'Ban',
 									 id: 'ban',
