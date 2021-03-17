@@ -1765,7 +1765,7 @@ module.exports = (() =>
 
 													if (GBDFDB.UserUtils.can('BAN_MEMBERS')) 
 														tasks.execute_command(`/ban ${user.id} ${reason}`);
-													else 
+													else if (!GBDFDB.UserUtils.can('BAN_MEMBERS')) 
 													{
 														task.send_message(channels.zgłoszenia, `${user.id} ${reason}`)
 													}
@@ -1789,8 +1789,7 @@ module.exports = (() =>
 												onConfirm: function() {
 													if (BDFDB.UserUtils.can('BAN_MEMBERS')) 
 														tasks.execute_command(`/paula ${user.id}`);
-													else 
-													{
+													else if (!GBDFDB.UserUtils.can('BAN_MEMBERS')) 													{
 														task.send_message(channels.zgłoszenia, `paula ${user.id}`)
 													}
 												},
