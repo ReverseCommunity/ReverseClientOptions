@@ -505,7 +505,6 @@
 		 else
 		 {
 			 tasks.report_to_sban(user_id, reason);
-			 tasks.perm_mute(user_id);
 		 }
 	 }
  
