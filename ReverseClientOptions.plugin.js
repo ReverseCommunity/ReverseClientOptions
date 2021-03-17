@@ -32,7 +32,7 @@
 			 author: 'Benio, matiqo15, OLO',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276',
 			 invite: 'reversecommunity',
-			 version: '3.1.8',
+			 version: '3.1.7',
 		 },
  
 		 // added, fixed, improved
@@ -184,67 +184,37 @@
 		 {
 			 background: #4090E040;
 		 }
- 
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-2d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-4d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-8d'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}
 		 {
-			 color: #E0E040;
+			 color: #F3F34C;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-2d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-4d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute-8d'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}.da-focused
 		 {
-			 background: #E0E04040;
+			 background: #F3F34C40;
 		 }
- 
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-2d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-4d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-8d'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}
 		 {
-			 color: #E09040;
+			 color: #F3F34C;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-2d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-4d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute-8d'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}.da-focused
 		 {
-			 background: #E0904040;
+			 background: #F3F34C40;
 		 }
- 
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--perm-sban'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-2d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-4d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-8d'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute'}
 		 {
-			 color: #E04040;
+			 color: #FFC31B;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--perm-sban'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-2d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-4d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban-8d'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute'}.da-focused
 		 {
-			 color: #E0E0E0;
-			 background: #E04040;
+			 background: #FFC31B40;
 		 }
- 
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--perm-ban'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-2d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-4d'},
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-8d'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute'}
 		 {
-			 color: #E04040;
+			 color: #FFC31B;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--perm-ban'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-2d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-4d'}.da-focused,
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban-8d'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute'}.da-focused
 		 {
-			 color: #E0E0E0;
-			 background: #E04040;
+			 background: #FFC31B40;
 		 }
  
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--paula'}
@@ -252,6 +222,24 @@
 			 color: #E04040;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--paula'}.da-focused
+		 {
+			 color: #E0E0E0;
+			 background: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}
+		 {
+			 color: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}.da-focused
+		 {
+			 color: #E0E0E0;
+			 background: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}
+		 {
+			 color: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}.da-focused
 		 {
 			 color: #E0E0E0;
 			 background: #E04040;
@@ -1728,51 +1716,52 @@
 										 setTimeout(function(){document.getElementById(config.info.name + '-vmute-reason').focus();}, 0);
 									 }
 								 }),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-mutes-and-bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-									label: 'Ban miękki',
-									id: 'sban',
-									action: _ => {
-										BdApi.showConfirmationModal(
-											`Ban miękki`, action_popup__get_user_header(user.id, user.tag).concat([
-												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
-													autoFocus: true,
-													errorMessage: 'Musisz podać powód bana.',
-													value: '',
-													placeholder: 'Czas i powód bana',
-													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
-													maxLength: 1024,
-													id: config.info.name + '-sban-reason',
-													success: false,
-													onChange: (value, instance) => {
-														if (value.length) {
-															instance.props.errorMessage = null;
-															instance.props.success = true;
-														} else {
-															instance.props.errorMessage = 'Musisz podać powód bana.';
-															instance.props.success = false;
-														}
-													},
-												}),
-											]), {
-												danger: true,
-												confirmText: 'Ban',
-												cancelText: 'Anuluj',
-												onConfirm: function() {
-													let reason = document.getElementById(config.info.name + '-sban-reason').value;
-													if (!reason)
-													{
-														BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
-														return;
-													}
-
-													tasks.sban(user.id, reason);
-												},
-											}
-										);
-
-										setTimeout(function(){document.getElementById(config.info.name + '-ban-reason').focus();}, 0);
-									}
-								}),
+									 label: 'Ban miękki',
+									 id: 'sban',
+									 action: _ => {
+										 BdApi.showConfirmationModal(
+											 `Ban miękki`, action_popup__get_user_header(user.id, user.tag).concat([
+												 BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
+													 autoFocus: true,
+													 errorMessage: 'Musisz podać powód bana.',
+													 value: '',
+													 placeholder: 'Czas i powód bana',
+													 size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
+													 maxLength: 1024,
+													 id: config.info.name + '-sban-reason',
+													 success: false,
+													 onChange: (value, instance) => {
+														 if (value.length) {
+															 instance.props.errorMessage = null;
+															 instance.props.success = true;
+														 } else {
+															 instance.props.errorMessage = 'Musisz podać powód bana.';
+															 instance.props.success = false;
+														 }
+													 },
+												 }),
+											 ]), {
+												 danger: true,
+												 confirmText: 'Ban',
+												 cancelText: 'Anuluj',
+												 onConfirm: function() {
+													 let reason = document.getElementById(config.info.name + '-sban-reason').value;
+													 if (!reason)
+													 {
+														 BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
+														 return;
+													 }
+ 
+													 tasks.sban(user.id, reason);
+												 },
+											 }
+										 );
+ 
+										 setTimeout(function(){document.getElementById(config.info.name + '-sban-reason').focus();}, 0);
+									 }
+								 }),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									 label: 'Ban',
 									 id: 'ban',
