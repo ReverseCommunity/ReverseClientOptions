@@ -244,11 +244,15 @@
 			 color: #E0E0E0;
 			 background: #E04040;
 		 }
- 
+		 #user-context-${config.info.name + '-Menu-UserContextMenu'}
+		 {
+			 color: #4477cf;
+		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--sup'}
 		 {
 			 color: #E0E040;
 		 }
+		 
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--sup'}.da-focused
 		 {
 			 color: #E0E040;
