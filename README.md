@@ -11,7 +11,7 @@ Ten moduł skupia się na 3 rodzajach menu:
 - Menu kanału
 - Menu użytkownika
 
-#### Menu wiadomości
+### Menu wiadomości
 Oferuje szybką opcje ukarania osoby za (i inne):
 
 - Nie stosowanie się do wzoru
@@ -30,7 +30,7 @@ Oferuje szybką opcje ukarania osoby za (i inne):
 - OK (reakcja na `#pomoc_supportu`)
 - Nope (reakcja na `#pomoc_supportu`)
 
-#### Menu kanału
+### Menu kanału
 Oferuje szybkie i wygodniejsze działania z użytkownikami na kanałach głosowych.
 
 - Przenieś cały kanał do mnie
@@ -42,7 +42,7 @@ Oferuje szybkie i wygodniejsze działania z użytkownikami na kanałach głosowy
 - Odogłusz wszystkich
 - Rozłącz wszystkich
 
-#### Menu użytkownika
+### Menu użytkownika
 Oferuje wygodniejsze pełnienie funkcji administracyjnych na użytkownikach.
 
 - Sprawdź statystyki
@@ -61,9 +61,11 @@ Oferuje wygodniejsze pełnienie funkcji administracyjnych na użytkownikach.
 # Moduł Informacyjny
 Oferuje szybki dostęp do informacji.
 
+### Ekran użytkownika
 - Stworzono konto: `date`
 
 # Moduł Meta
 Inne, przydatne funkcje.
 
+### Menu wiadomości
 - Skopiuj tekst z formatowaniem
