@@ -1623,7 +1623,7 @@
  
 				 if (!BDFDB.UserUtils.can('MANAGE_MESSAGES', user.id)) {
 					 contextMenuItems.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						 label: 'Reverse┋Kary',
+						 label: '❌Reverse┋Kary',
 						 id: config.info.name + '-Kary-UserContextMenu',
 						 children: BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuGroup, {
 							 children: [
