@@ -665,7 +665,8 @@
 			 onLoad () {
 				this.defaults = {
 					general: {
-						createdDate:			{value: true, 			description: "Pokazuje datę utworzenia konta"}
+						createdDate:			{value: true, 			description: "Pokazuje datę utworzenia konta"},
+						copyRaw:			    {value: true, 			description: "Pozwala na kopiowanie tekstu wraz z formatowaniem"}
 					},
 					places: {
 					},
@@ -713,7 +714,7 @@
 			 }
 			 
 			// ------------------------------------------------------------------------------------------------------------
-	 		// ------------------------------------ Created Date ----------------------------------------------------------
+	 		// ------------------------------------ SettingPanel ----------------------------------------------------------
 			// ------------------------------------------------------------------------------------------------------------
 
 			 getSettingsPanel (collapseStates = {}) {
@@ -758,6 +759,9 @@
 				}
 			}
 
+			// ------------------------------------------------------------------------------------------------------------
+	 		// ------------------------------------ Created Date ----------------------------------------------------------
+			// ------------------------------------------------------------------------------------------------------------
 			processUserPopout (e) {
 				if (e.instance.props.user && this.settings.general.createdDate) {
 					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {name: "CustomStatus"});
@@ -798,7 +802,7 @@
 				}
 			}
  			// ------------------------------------------------------------------------------------------------------------
-	 		// ------------------------------------ Copy Raw Text ---------------------------------------------------------
+	 		// ------------------------------------ MessageOptionToolbar --------------------------------------------------
 			// ------------------------------------------------------------------------------------------------------------
 			 onMessageOptionToolbar(e)
 			 {
@@ -843,6 +847,26 @@
  
 				 let children = e.returnvalue.props.children;
  
+				 // Kopiuj text (RAW)
+				 if (e.instance.props.message && this.settings.general.copyRaw) {
+					if (e.instance.props.expanded && e.instance.props.message && e.instance.props.channel) {
+						e.returnvalue.props.children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer, {
+							key: "copy-message-raw",
+							text: BDFDB.LanguageUtils.LanguageStrings.COPY_TEXT + " (Raw)",
+							children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Clickable, {
+								className: BDFDB.disCN.messagetoolbarbutton,
+								onClick: _ => {
+									BDFDB.LibraryRequires.electron.clipboard.write({text: e.instance.props.message.content});
+								},
+								children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon, {
+									className: BDFDB.disCN.messagetoolbaricon,
+									name: BDFDB.LibraryComponents.SvgIcon.Names.RAW_TEXT
+								})
+							})
+						}));
+					}
+				}
+
 				 // Niestosowanie się do wzoru
 				 if
 				 (		!expanded
@@ -1418,7 +1442,10 @@
 					 }));
 				 }
 			 }
- 
+
+			// ------------------------------------------------------------------------------------------------------------
+	 		// ------------------------------------ ChannelContextMenu ----------------------------------------------------
+			// ------------------------------------------------------------------------------------------------------------
 			 onChannelContextMenu(e)
 			 {
 				 if (e?.instance?.props?.guild?.id != guild_id)
@@ -1513,7 +1540,10 @@
  
 				 children.splice(index > -1 ? index : children.length, 0, BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuGroup, {children: contextMenuItems}));
 			 }
-		 
+
+			// ------------------------------------------------------------------------------------------------------------
+	 		// ------------------------------------ UserContextMenu -------------------------------------------------------
+			// ------------------------------------------------------------------------------------------------------------		 
 			 onUserContextMenu(e)
 			 {
 				 console.log(e);
