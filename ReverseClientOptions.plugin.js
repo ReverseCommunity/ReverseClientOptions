@@ -662,16 +662,28 @@
 		 {
 			 unpatches = [];
  
-			 onLoad()
-			 {
-				 this.patchedModules =
-				 {
-					 before:
-					 {
-						 Message: 'default',
-					 },
-				 };
-			 }
+			 onLoad () {
+				this.defaults = {
+					general: {
+						displayText:			{value: true, 			description: "Display '{{presuffix}}' in the Date"}
+					},
+					places: {
+						userPopout:				{value: true, 			description: "User Popouts"},
+						userProfile:			{value: true, 			description: "User Profile Modal"}
+					},
+					dates: {
+						creationDate:			{value: {}, 			description: "Creation Date"},
+					}
+				};
+				
+				this.patchedModules = {
+					after: {
+						UserPopout: "render",
+						AnalyticsContext: "render"
+					}
+				};
+				
+			}
  
 			 onStart()
 			 {
@@ -701,6 +713,107 @@
 			 {
 				 ZLibrary.PluginUpdater.checkForUpdate(config.info.name, config.info.version, config.info.updateUrl);
 			 }
+			 
+			// ------------------------------------------------------------------------------------------------------------
+	 		// ------------------------------------ Created Date ----------------------------------------------------------
+			// ------------------------------------------------------------------------------------------------------------
+
+			 getSettingsPanel (collapseStates = {}) {
+				let settingsPanel;
+				return settingsPanel = BDFDB.PluginUtils.createSettingsPanel(this, {
+					collapseStates: collapseStates,
+					children: _ => {
+						let settingsItems = [];
+						
+						settingsItems.push(Object.keys(this.defaults.general).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
+							type: "Switch",
+							plugin: this,
+							keys: ["general", key],
+							label: key == "displayText" ? this.defaults.general[key].description.replace("{{presuffix}}", this.labels.created_at.replace("{{time}}", "").trim()) : this.defaults.general[key].description,
+							value: this.settings.general[key]
+						})));
+						
+						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormComponents.FormDivider, {
+							className: BDFDB.disCN.marginbottom8
+						}));
+						
+						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsPanelList, {
+							title: "Add Date in:",
+							children: Object.keys(this.defaults.places).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
+								type: "Switch",
+								plugin: this,
+								keys: ["places", key],
+								label: this.defaults.places[key].description,
+								value: this.settings.places[key]
+							}))
+						}));
+						
+						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormComponents.FormDivider, {
+							className: BDFDB.disCN.marginbottom8
+						}));
+						
+						settingsItems.push(Object.keys(this.defaults.dates).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.DateInput, Object.assign({}, this.settings.dates[key], {
+							label: this.defaults.dates[key].description,
+							prefix: _ => (this.settings.general.displayText && this.labels.created_at.split("{{time}}")[0] || "").trim(),
+							suffix: _ => (this.settings.general.displayText && this.labels.created_at.split("{{time}}")[1] || "").trim(),
+							onChange: valueObj => {
+								this.SettingsUpdated = true;
+								this.settings.dates[key] = valueObj;
+								BDFDB.DataUtils.save(this.settings.dates, this, "dates");
+							}
+						}))));
+						
+						return settingsItems.flat(10);
+					}
+				});
+			}
+
+			onSettingsClosed () {
+				if (this.SettingsUpdated) {
+					delete this.SettingsUpdated;
+					BDFDB.PatchUtils.forceAllUpdates(this);
+				}
+			}
+
+			processUserPopout (e) {
+				if (e.instance.props.user && this.settings.places.userPopout) {
+					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {name: "CustomStatus"});
+					if (index > -1) this.injectDate(children, 2, e.instance.props.user);
+				}
+			}
+
+			processAnalyticsContext (e) {
+				if (typeof e.returnvalue.props.children == "function" && e.instance.props.section == BDFDB.DiscordConstants.AnalyticsSections.PROFILE_MODAL && this.settings.places.userProfile) {
+					let renderChildren = e.returnvalue.props.children;
+					e.returnvalue.props.children = (...args) => {
+						let renderedChildren = renderChildren(...args);
+						let [children, index] = BDFDB.ReactUtils.findParent(renderedChildren, {name: ["DiscordTag", "ColoredFluxTag"]});
+						if (index > -1) this.injectDate(children, 1, children[index].props.user);
+						return renderedChildren;
+					};
+				}
+			}
+			
+			injectDate (children, index, user) {
+				let timestamp = BDFDB.LibraryComponents.DateInput.format(this.settings.dates.creationDate, user.createdAt);
+				children.splice(index, 0, BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextScroller, {
+					className: BDFDB.disCNS._creationdatedate + BDFDB.disCNS.userinfodate + BDFDB.disCN.textrow,
+					children: this.settings.general.displayText ? this.labels.created_at.replace("{{time}}", timestamp) : timestamp
+				}));
+			}
+
+			setLabelsByLanguage () {
+				switch (BDFDB.LanguageUtils.getLanguage().id) {
+					case "pl":		// Polish
+						return {
+							created_at:							"Utworzono {{time}}"
+						};
+					default:		// English
+						return {
+							created_at:							"Created on {{time}}"
+						};
+				}
+			}
  
 			 onMessageOptionToolbar(e)
 			 {
