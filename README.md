@@ -62,7 +62,7 @@ Oferuje wygodniejsze pełnienie funkcji administracyjnych na użytkownikach.
 Oferuje szybki dostęp do informacji.
 
 ### Ekran użytkownika
-- Stworzono konto: `date`
+- Data utworzenia konta
 
 # Moduł Meta
 Inne, przydatne funkcje.
