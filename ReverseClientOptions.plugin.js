@@ -665,14 +665,12 @@
 			 onLoad () {
 				this.defaults = {
 					general: {
-						displayText:			{value: true, 			description: "Display '{{presuffix}}' in the Date"}
+						createdDate:			{value: true, 			description: "Pokazuje datę utworzenia konta"}
 					},
 					places: {
-						userPopout:				{value: true, 			description: "User Popouts"},
-						userProfile:			{value: true, 			description: "User Profile Modal"}
 					},
 					dates: {
-						creationDate:			{value: {}, 			description: "Creation Date"},
+						dateFormat:			    {value: {}, 			description: "Format Daty"},
 					}
 				};
 				
@@ -737,21 +735,6 @@
 							className: BDFDB.disCN.marginbottom8
 						}));
 						
-						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsPanelList, {
-							title: "Add Date in:",
-							children: Object.keys(this.defaults.places).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
-								type: "Switch",
-								plugin: this,
-								keys: ["places", key],
-								label: this.defaults.places[key].description,
-								value: this.settings.places[key]
-							}))
-						}));
-						
-						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormComponents.FormDivider, {
-							className: BDFDB.disCN.marginbottom8
-						}));
-						
 						settingsItems.push(Object.keys(this.defaults.dates).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.DateInput, Object.assign({}, this.settings.dates[key], {
 							label: this.defaults.dates[key].description,
 							prefix: _ => (this.settings.general.displayText && this.labels.created_at.split("{{time}}")[0] || "").trim(),
@@ -776,14 +759,14 @@
 			}
 
 			processUserPopout (e) {
-				if (e.instance.props.user && this.settings.places.userPopout) {
+				if (e.instance.props.user && this.settings.general.createdDate) {
 					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {name: "CustomStatus"});
 					if (index > -1) this.injectDate(children, 2, e.instance.props.user);
 				}
 			}
 
 			processAnalyticsContext (e) {
-				if (typeof e.returnvalue.props.children == "function" && e.instance.props.section == BDFDB.DiscordConstants.AnalyticsSections.PROFILE_MODAL && this.settings.places.userProfile) {
+				if (typeof e.returnvalue.props.children == "function" && e.instance.props.section == BDFDB.DiscordConstants.AnalyticsSections.PROFILE_MODAL && this.settings.general.createdDate) {
 					let renderChildren = e.returnvalue.props.children;
 					e.returnvalue.props.children = (...args) => {
 						let renderedChildren = renderChildren(...args);
@@ -795,10 +778,10 @@
 			}
 			
 			injectDate (children, index, user) {
-				let timestamp = BDFDB.LibraryComponents.DateInput.format(this.settings.dates.creationDate, user.createdAt);
+				let timestamp = BDFDB.LibraryComponents.DateInput.format(this.settings.dates.dateFormat, user.createdAt);
 				children.splice(index, 0, BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextScroller, {
-					className: BDFDB.disCNS._creationdatedate + BDFDB.disCNS.userinfodate + BDFDB.disCN.textrow,
-					children: this.settings.general.displayText ? this.labels.created_at.replace("{{time}}", timestamp) : timestamp
+					className: BDFDB.disCNS.dateFormatdate + BDFDB.disCNS.userinfodate + BDFDB.disCN.textrow,
+					children: this.settings.general.date ? this.labels.created_at.replace("{{time}}", timestamp) : timestamp
 				}));
 			}
 
@@ -814,7 +797,9 @@
 						};
 				}
 			}
- 
+ 			// ------------------------------------------------------------------------------------------------------------
+	 		// ------------------------------------ Copy Raw Text ---------------------------------------------------------
+			// ------------------------------------------------------------------------------------------------------------
 			 onMessageOptionToolbar(e)
 			 {
 				 if
