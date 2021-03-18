@@ -248,6 +248,11 @@
 		 {
 			 color: #4477cf;
 		 }
+		 #user-context-${config.info.name + '-Menu-UserContextMenu'}.da-focused
+		 {
+			color: #4090E0;
+			background: #4090E040;
+		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--sup'}
 		 {
 			 color: #E0E040;
@@ -289,11 +294,13 @@
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu'}
 		 {
-			 
+			color: #4477cf;
+
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu'}.da-focused
 		 {
-			 
+			color: #4090E0;
+			background: #4090E040;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--move'}
