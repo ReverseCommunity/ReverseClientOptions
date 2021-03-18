@@ -32,7 +32,7 @@
 			 author: 'Benio, matiqo15, OLO',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276',
 			 invite: 'reversecommunity',
-			 version: '3.1.9',
+			 version: '3.2.0',
 		 },
  
 		 // added, fixed, improved
