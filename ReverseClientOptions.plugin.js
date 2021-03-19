@@ -244,6 +244,24 @@
 			 color: #E0E0E0;
 			 background: #E04040;
 		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--reklama'}
+		 {
+			 color: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--reklama'}.da-focused
+		 {
+			 color: #E0E0E0;
+			 background: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--multikonto'}
+		 {
+			 color: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--multikonto'}.da-focused
+		 {
+			 color: #E0E0E0;
+			 background: #E04040;
+		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu'}
 		 {
 			 color: #4477cf;
@@ -1623,7 +1641,7 @@
  
 				 if (!BDFDB.UserUtils.can('MANAGE_MESSAGES', user.id)) {
 					 contextMenuItems.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						 label: '❌Reverse┋Kary',
+						 label: 'Reverse┋Kary',
 						 id: config.info.name + '-Kary-UserContextMenu',
 						 children: BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuGroup, {
 							 children: [
@@ -1943,6 +1961,43 @@
 										 );
  
 										 setTimeout(function(){document.getElementById(config.info.name + '-ban-reason').focus();}, 0);
+									 }
+								 }),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-bans-and-thematic_bans'}),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									 label: 'Reklama',
+									 id: 'reklama',
+									 action: _ => {
+										 BdApi.showConfirmationModal(
+											 `Reklama`, action_popup__get_user_header(user.id, user.tag), {
+												 danger: true,
+												 confirmText: 'Ban',
+												 cancelText: 'Anuluj',
+												 onConfirm: function() {
+													 tasks.ban(user.id, 'reklama')
+												 },
+											 }
+										 );
+ 
+										 setTimeout(function(){document.getElementById(config.info.name + '-reklama-reason').focus();}, 0);
+									 }
+								 }),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									 label: 'Multikonto',
+									 id: 'multikonto',
+									 action: _ => {
+										 BdApi.showConfirmationModal(
+											 `Multikonto`, action_popup__get_user_header(user.id, user.tag), {
+												 danger: true,
+												 confirmText: 'Ban',
+												 cancelText: 'Anuluj',
+												 onConfirm: function() {
+													 tasks.ban(user.id, 'multikonto')
+												 },
+											 }
+										 );
+ 
+										 setTimeout(function(){document.getElementById(config.info.name + '-multikonto-reason').focus();}, 0);
 									 }
 								 }),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
