@@ -690,13 +690,11 @@
 			 onLoad () {
 				this.defaults = {
 					general: {
-						createdDate:			{value: true, 			description: "Pokazuje datę utworzenia konta"},
 						copyRaw:			    {value: true, 			description: "Pozwala na kopiowanie tekstu wraz z formatowaniem"}
 					},
 					places: {
 					},
 					dates: {
-						dateFormat:			    {value: {}, 			description: "Format Daty"},
 					}
 				};
 				
@@ -784,48 +782,6 @@
 				}
 			}
 
-			// ------------------------------------------------------------------------------------------------------------
-	 		// ------------------------------------ Created Date ----------------------------------------------------------
-			// ------------------------------------------------------------------------------------------------------------
-			processUserPopout (e) {
-				if (e.instance.props.user && this.settings.general.createdDate) {
-					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {name: "CustomStatus"});
-					if (index > -1) this.injectDate(children, 2, e.instance.props.user);
-				}
-			}
-
-			processAnalyticsContext (e) {
-				if (typeof e.returnvalue.props.children == "function" && e.instance.props.section == BDFDB.DiscordConstants.AnalyticsSections.PROFILE_MODAL && this.settings.general.createdDate) {
-					let renderChildren = e.returnvalue.props.children;
-					e.returnvalue.props.children = (...args) => {
-						let renderedChildren = renderChildren(...args);
-						let [children, index] = BDFDB.ReactUtils.findParent(renderedChildren, {name: ["DiscordTag", "ColoredFluxTag"]});
-						if (index > -1) this.injectDate(children, 1, children[index].props.user);
-						return renderedChildren;
-					};
-				}
-			}
-			
-			injectDate (children, index, user) {
-				let timestamp = BDFDB.LibraryComponents.DateInput.format(this.settings.dates.dateFormat, user.createdAt);
-				children.splice(index, 0, BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextScroller, {
-					className: BDFDB.disCNS.dateFormatdate + BDFDB.disCNS.userinfodate + BDFDB.disCN.textrow,
-					children: this.settings.general.date ? this.labels.created_at.replace("{{time}}", timestamp) : timestamp
-				}));
-			}
-
-			setLabelsByLanguage () {
-				switch (BDFDB.LanguageUtils.getLanguage().id) {
-					case "pl":		// Polish
-						return {
-							created_at:							"Utworzono {{time}}"
-						};
-					default:		// English
-						return {
-							created_at:							"Created on {{time}}"
-						};
-				}
-			}
  			// ------------------------------------------------------------------------------------------------------------
 	 		// ------------------------------------ MessageOptionToolbar --------------------------------------------------
 			// ------------------------------------------------------------------------------------------------------------
