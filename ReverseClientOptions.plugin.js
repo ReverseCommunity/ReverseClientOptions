@@ -7,8 +7,8 @@
  * @github_raw https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js
  * @updateUrl https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js
  * @source https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js
- * @author Benio, matiqo15, OLO
- * @authorId 231850998279176193, 490431174322159626, 543819194656096276
+ * @author Benio, matiqo15, OLO, Specou
+ * @authorId 231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577
  * @invite reversecommunity
  */
 
@@ -29,16 +29,16 @@
 			 github_raw: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js',
 			 updateUrl: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js',
 			 source: 'https://raw.githubusercontent.com/ReverseCommunity/ReverseClientOptions/master/ReverseClientOptions.plugin.js',
-			 author: 'Benio, matiqo15, OLO',
-			 authorId: '231850998279176193, 490431174322159626, 543819194656096276',
+			 author: 'Benio, matiqo15, OLO, Specou',
+			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.2.0',
+			 version: '3.3.0',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 fixed: {'Update': 'Naprawiono automatyczne aktualizacje'},
+			 added: {'Update': 'Dodano nowe kolorki i opcje'},
 		 },
  
 		 // milliseconds
@@ -168,12 +168,12 @@
  
 		 #user-context-${config.info.name + '-Kary-UserContextMenu'}
 		 {
-			 color: #E04040;
+			 color: #ec5938;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu'}.da-focused
 		 {
 			 color: #E0E0E0;
-			 background: #E04040;
+			 background: #ec5938;
 		 }
  
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--note'}
@@ -182,39 +182,44 @@
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--note'}.da-focused
 		 {
-			 background: #4090E040;
+			 color: #E0E0E0;
+			 background: #4090E0;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}
 		 {
-			 color: #F3F34C;
+			 color: #f3f34c;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--twarn'}.da-focused
 		 {
-			 background: #F3F34C40;
+			 color: #696969;
+			 background: #f3f34c;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}
 		 {
-			 color: #F3F34C;
+			 color: #f6ea42;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--vwarn'}.da-focused
 		 {
-			 background: #F3F34C40;
+			 color: #696969;
+			 background: #f6ea42;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute'}
 		 {
-			 color: #FFC31B;
+			 color: #fbd82f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--tmute'}.da-focused
 		 {
-			 background: #FFC31B40;
+			 color: #606060;
+			 background: #fbd82f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute'}
 		 {
-			 color: #FFC31B;
+			 color: #fdcf26;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--vmute'}.da-focused
 		 {
-			 background: #FFC31B40;
+			 color: #606060;
+			 background: #fdcf26;
 		 }
  
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--paula'}
@@ -228,21 +233,21 @@
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}
 		 {
-			 color: #E04040;
+			 color: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}.da-focused
 		 {
-			 color: #E0E0E0;
-			 background: #E04040;
+			 color: #D0D0D0;
+			 background: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}
 		 {
-			 color: #E04040;
+			 color: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}.da-focused
 		 {
-			 color: #E0E0E0;
-			 background: #E04040;
+			 color: #D0D0D0;
+			 background: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--reklama'}
 		 {
@@ -268,46 +273,48 @@
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu'}.da-focused
 		 {
-			color: #4090E0;
-			background: #4090E040;
+			color: #E0E0E0;
+			background: #4090E0;
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--sup'}
 		 {
-			 color: #E0E040;
+			 color: #b366ff;
 		 }
 		 
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--sup'}.da-focused
 		 {
-			 color: #E0E040;
-			 background: #E0E04040;
+			 color: #F0F0F0;
+			 background: #b366ff;
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--grab'}
 		 {
-			 color: #E0E040;
+			 color: #b366ff;
 		 }
 		 
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--grab'}.da-focused
 		 {
-			 color: #E0E040;
-			 background: #E0E04040;
+			 color: #F0F0F0;
+			 background: #b366ff
 		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move'}
 		 {
-			 
+			color: #fbd82f; 
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move'}.da-focused
 		 {
-			 
+			color: #606060;
+			background: #fbd82f; 
 		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move_craft'}
 		 {
-			 
+			 color: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move_craft'}.da-focused
 		 {
-			 
+			 color: #585858;
+			 background: #f6712f;
 		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--stat'}
@@ -316,8 +323,8 @@
 		 }
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--stat'}.da-focused
 		 {
-			 color: #4090E0;
-			 background: #4090E040;
+			 color: #E0E0E0;
+			 background: #4090E0;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu'}
