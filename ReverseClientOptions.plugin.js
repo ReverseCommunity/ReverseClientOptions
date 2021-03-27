@@ -281,6 +281,16 @@
 			 color: #E0E040;
 			 background: #E0E04040;
 		 }
+		 #user-context-${config.info.name + '-Menu-UserContextMenu--grab'}
+		 {
+			 color: #E0E040;
+		 }
+		 
+		 #user-context-${config.info.name + '-Menu-UserContextMenu--grab'}.da-focused
+		 {
+			 color: #E0E040;
+			 background: #E0E04040;
+		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move'}
 		 {
@@ -1585,6 +1595,15 @@
 						 action: _ => {
 							 tasks.execute_command(`/sup ${user.id}`);
 						 }
+					 }));
+
+				if (!BDFDB.UserUtils.can('MUTE_MEMBERS', user.id))
+                     menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+                         label: 'Zaproś i Przenieś na Pomoc Supportu',
+                         id: 'grab',
+                         action: _ => {
+                             tasks.execute_command(`/grab ${user.id}`);
+							}
 					 }));
 				 
 				 contextMenuItems.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
