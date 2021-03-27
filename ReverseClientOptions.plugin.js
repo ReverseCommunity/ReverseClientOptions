@@ -32,7 +32,7 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.3.0',
+			 version: '3.3.1',
 		 },
  
 		 // added, fixed, improved
@@ -294,7 +294,7 @@
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--grab'}.da-focused
 		 {
 			 color: #F0F0F0;
-			 background: #b366ff
+			 background: #b366ff;
 		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--move'}
@@ -329,40 +329,43 @@
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu'}
 		 {
-			color: #4477cf;
+			color: #4090E0;
 
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu'}.da-focused
 		 {
-			color: #4090E0;
-			background: #4090E040;
+			color: #E0E0E0;
+			 background: #4090E0;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--move'}
 		 {
-			 
+			 color: #b366ff;
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--move'}.da-focused
 		 {
-			 
+			 color: #F0F0F0;
+			 background: #b366ff;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--moveusers'}
 		 {
-			 
+			 color: #d552ed;
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--moveusers'}.da-focused
 		 {
-			 
+			 color: #F0F0F0;
+			 background: #d552ed;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--moveus'}
 		 {
-			 
+			 color: #f037d7;
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--moveus'}.da-focused
 		 {
-			 
+			 color: #F0F0F0;
+			 background: #f037d7;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--mute'}
@@ -381,8 +384,8 @@
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--unmute'}.da-focused
 		 {
-			 color: #40E040;
-			 background: #40E04040;
+			 color: #050201;
+			 background: #24db24;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--deafen'}
@@ -401,18 +404,18 @@
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--undeafen'}.da-focused
 		 {
-			 color: #40E040;
-			 background: #40E04040;
+			 color: #050201;
+			 background: #24db24;
 		 }
  
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--dc'}
 		 {
-			 color: #E04040;
+			 color: #d73a39;
 		 }
 		 #channel-context-${config.info.name + '-Menu-ChannelContextMenu--dc'}.da-focused
 		 {
 			 color: #E0E0E0;
-			 background: #E04040;
+			 background: #d73a39;
 		 }
 	 `;
  
