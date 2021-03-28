@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.3.1',
+			 version: '3.3.2',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 added: {'Update': 'Dodano nowe kolorki i opcje'},
+			 improved: {'Update': 'Dodano zmiany kosmetyczne'},
 		 },
  
 		 // milliseconds
@@ -1465,10 +1465,10 @@
 				 let menuEntries = [];
  
 				 menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-					 label: 'Przenieś cały kanał do mnie',
-					 id: 'move',
+					 label: 'Przenieś wszystkich nas tutaj',
+					 id: 'moveus',
 					 action: _ => {
-						 tasks.execute_command(`/move ${channelID}`);
+						 tasks.execute_command(`/move us ${channelID}`);
 					 }
 				 }));
  
@@ -1481,10 +1481,10 @@
 				 }));
  
 				 menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-					 label: 'Przenieś wszystkich nas tutaj',
-					 id: 'moveus',
+					 label: 'Przenieś cały kanał do mnie',
+					 id: 'move',
 					 action: _ => {
-						 tasks.execute_command(`/move us ${channelID}`);
+						 tasks.execute_command(`/move ${channelID}`);
 					 }
 				 }));
  
@@ -1590,7 +1590,7 @@
  
 				 if (user.id != BDFDB.UserUtils.me.id) {
 					 menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						 label: 'Wywal na kloce',
+						 label: 'Przenieś na Reversecraft',
 						 id: 'move_craft',
 						 action: _ => {
 							 tasks.execute_command(`/move ${user.id} craft`);
