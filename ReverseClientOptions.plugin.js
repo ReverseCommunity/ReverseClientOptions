@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.3.3',
+			 version: '3.3.4',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Wsiadamy na rowerek'},
+			 improved: {'Update': 'Wsiadamy na rowerek, jedna noga na pedale'},
 		 },
  
 		 // milliseconds
@@ -120,7 +120,7 @@
  
 		 // Cafeteria
 		 chat_ogolny: '794692595107758121',
-		 szukanie_druzyny: '781584198476759049',
+		 szukanie_druzyny: '831335672589058079',
 		 szukanie_druzyny_18: '831299543222976542',
  
 		 // Multimedia
@@ -131,10 +131,10 @@
 		 rzeczy_do_sprawdzenia: '781584199676592139',
  
 		 // Support
-		 zgłoszenia: '781584199676592147',
+		 zgłoszenia: '831521997212745779',
 		 pomoc_supportu: '781584200041365544',
 		 komendy: '831333695620775956',
-		 izolatka_chat: '781584200041365547',
+		 izolatka_chat: '831492057423413268',
  
 		 // Liga
 		 liga_zapisy: '781584210032590898',
