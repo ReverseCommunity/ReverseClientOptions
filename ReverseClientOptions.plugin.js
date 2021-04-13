@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.3.2',
+			 version: '3.3.3',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Dodano zmiany kosmetyczne'},
+			 improved: {'Update': 'Wsiadamy na rowerek'},
 		 },
  
 		 // milliseconds
@@ -119,9 +119,9 @@
 		 podania: '781584198476759040',
  
 		 // Cafeteria
-		 chat_ogolny: '781584198476759048',
+		 chat_ogolny: '794692595107758121',
 		 szukanie_druzyny: '781584198476759049',
-		 szukanie_druzyny_18: '781584198947307550',
+		 szukanie_druzyny_18: '831299543222976542',
  
 		 // Multimedia
 		 media: '781584198947307553',
