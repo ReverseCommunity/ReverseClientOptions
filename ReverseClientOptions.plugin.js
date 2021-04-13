@@ -133,7 +133,7 @@
 		 // Support
 		 zgłoszenia: '781584199676592147',
 		 pomoc_supportu: '781584200041365544',
-		 komendy: '781584200041365546',
+		 komendy: '831333695620775956',
 		 izolatka_chat: '781584200041365547',
  
 		 // Liga
