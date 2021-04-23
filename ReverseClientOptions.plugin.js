@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.3.4',
+			 version: '3.4',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Wsiadamy na rowerek, jedna noga na pedale'},
+			 improved: {'Update': 'Sban zmieniony na imute'},
 		 },
  
 		 // milliseconds
@@ -231,11 +231,11 @@
 			 color: #E0E0E0;
 			 background: #E04040;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--imute'}
 		 {
 			 color: #f6712f;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--sban'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--imute'}.da-focused
 		 {
 			 color: #D0D0D0;
 			 background: #f6712f;
@@ -547,13 +547,13 @@
 		 tasks.execute_command(`/note ${user_id} ${reason}`);
 	 }
  
-	 tasks.sban = function(user_id, reason)
+	 tasks.imute = function(user_id, reason)
 	 {
 		 if (GBDFDB.UserUtils.can('BAN_MEMBERS'))
-			 tasks.execute_command(`/sban ${user_id} ${reason}`);
+			 tasks.execute_command(`/imute ${user_id} ${reason}`);
 		 else
 		 {
-			 tasks.report_to_sban(user_id, reason);
+			 tasks.report_to_imute(user_id, reason);
 		 }
 	 }
  
@@ -572,9 +572,9 @@
 		 tasks.send_message(channels.zgłoszenia, `${user_id} ${reason}`);
 	 }
  
-	 tasks.report_to_sban = function(user_id, reason)
+	 tasks.report_to_imute = function(user_id, reason)
 	 {
-		 tasks.send_message(channels.zgłoszenia, `sban ${user_id} ${reason}`);
+		 tasks.send_message(channels.zgłoszenia, `imute ${user_id} ${reason}`);
 	 }
  
 	 tasks.vmute = function(user_id, reason)
@@ -1225,7 +1225,7 @@
 					 &&	!has_emoji(message.reactions, emojis.thumb_down.name)
 					 &&	message.content
 					 &&	!message.content.startsWith('paula ')
-					 &&	!message.content.startsWith('sban ')
+					 &&	!message.content.startsWith('imute ')
 					 &&	!message.content.startsWith('vmute ')
 				 )
 				 {
@@ -1296,7 +1296,7 @@
 					 &&	!has_emoji(message.reactions, emojis.thumb_up.name)
 					 &&	!has_emoji(message.reactions, emojis.thumb_down.name)
 					 &&	message.content
-					 &&	message.content.startsWith('sban ')
+					 &&	message.content.startsWith('imute ')
 				 )
 				 {
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
@@ -1859,26 +1859,26 @@
 								 }),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-mutes-and-bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-									label: 'Ban miękki',
-									id: 'sban',
+									label: 'Mute izolatka',
+									id: 'imute',
 									action: _ => {
 										BdApi.showConfirmationModal(
-											`Ban miękki`, action_popup__get_user_header(user.id, user.tag).concat([
+											`Mute izolatka`, action_popup__get_user_header(user.id, user.tag).concat([
 												BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TextInput, {
 													autoFocus: true,
-													errorMessage: 'Musisz podać powód bana.',
+													errorMessage: 'Musisz podać powód imuta.',
 													value: '',
-													placeholder: 'Czas i powód bana',
+													placeholder: 'Czas i powód imuta',
 													size: BDFDB.LibraryComponents.TextInput.Sizes.DEFAULT,
 													maxLength: 1024,
-													id: config.info.name + '-sban-reason',
+													id: config.info.name + '-imute-reason',
 													success: false,
 													onChange: (value, instance) => {
 														if (value.length) {
 															instance.props.errorMessage = null;
 															instance.props.success = true;
 														} else {
-															instance.props.errorMessage = 'Musisz podać powód bana.';
+															instance.props.errorMessage = 'Musisz podać powód imuta.';
 															instance.props.success = false;
 														}
 													},
@@ -1888,14 +1888,14 @@
 												confirmText: 'Ban',
 												cancelText: 'Anuluj',
 												onConfirm: function() {
-													let reason = document.getElementById(config.info.name + '-sban-reason').value;
+													let reason = document.getElementById(config.info.name + '-imute-reason').value;
 													if (!reason)
 													{
 														BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
 														return;
 													}
 
-													tasks.sban(user.id, reason);
+													tasks.imute(user.id, reason);
 												},
 											}
 										);
