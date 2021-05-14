@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.4',
+			 version: '3.5',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Sban zmieniony na imute'},
+			 improved: {'Update': 'Plugin działa na większej ilości kanałów'},
 		 },
  
 		 // milliseconds
@@ -120,11 +120,12 @@
  
 		 // Cafeteria
 		 chat_ogolny: '794692595107758121',
+		 dzień_dobry: '835083082121216030',
 		 szukanie_druzyny: '831335672589058079',
 		 szukanie_druzyny_18: '831299543222976542',
  
 		 // Multimedia
-		 media: '781584198947307553',
+		 media: '831570401715814430',
 		 propozycje: '781584198947307554',
  
 		 // Tickety
@@ -948,6 +949,7 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -984,6 +986,7 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
+					 		 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -1058,6 +1061,7 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_zgłoszenia
+					 		 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -1102,6 +1106,7 @@
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -1189,6 +1194,7 @@
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
