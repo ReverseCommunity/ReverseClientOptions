@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.4',
+			 version: '3.5',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Sban zmieniony na imute'},
+			 improved: {'Update': 'Plugin działa na większej ilości kanałów'},
 		 },
  
 		 // milliseconds
@@ -120,13 +120,25 @@
  
 		 // Cafeteria
 		 chat_ogolny: '794692595107758121',
+		 dzień_dobry: '835083082121216030',
 		 szukanie_druzyny: '831335672589058079',
 		 szukanie_druzyny_18: '831299543222976542',
+		 wspolne_granie: '832000036853383236',
+		 szukanie_ekipy: '839585256805236748',
  
 		 // Multimedia
-		 media: '781584198947307553',
+		 media: '831570401715814430',
 		 propozycje: '781584198947307554',
- 
+		 wlasna_tworczosc: '831570498693234708',
+		 propozycje_emotki: '813168670397562890',
+		 replay: '826084046371028994',
+		 jedzonko: '831337952146620526',
+		 selfie: '821121053069017158',
+		 pupile: '831334592727351327',
+		 outfit: '831334761532227585',
+		 tiktok: '834878020643848272',
+		 zlote_mysli: '831570909990223872',
+		 
 		 // Tickety
 		 rzeczy_do_sprawdzenia: '781584199676592139',
  
@@ -911,6 +923,8 @@
 					 &&	(
 								 channel.id == channels.szukanie_druzyny
 							 ||	channel.id == channels.szukanie_druzyny_18
+					 		 ||	channel.id == channels.wspolne_granie
+					 		 ||	channel.id == channels.szukanie_ekipy
 						 )
 				 )
 				 {
@@ -948,6 +962,7 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -984,6 +999,16 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
+					 		 ||	channel.id == channels.dzień_dobry
+					 		 ||	channel.id == channels.wlasna_tworczosc
+					 		 ||	channel.id == channels.propozycje_emotki
+					 		 ||	channel.id == channels.replay
+					 		 ||	channel.id == channels.jedzonko
+					 		 ||	channel.id == channels.selfie
+					 		 ||	channel.id == channels.pupile
+					 		 ||	channel.id == channels.outfit
+					 		 ||	channel.id == channels.tiktok
+					 		 ||	channel.id == channels.zlote_mysli
 						 )
 				 )
 				 {
@@ -1023,6 +1048,15 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
+					 		 ||	channel.id == channels.dzień_dobry
+					 		 ||	channel.id == channels.wlasna_tworczosc
+					 		 ||	channel.id == channels.propozycje_emotki
+					 		 ||	channel.id == channels.jedzonko
+					 		 ||	channel.id == channels.selfie
+					 		 ||	channel.id == channels.pupile
+					 		 ||	channel.id == channels.outfit
+					 		 ||	channel.id == channels.tiktok
+					 		 ||	channel.id == channels.zlote_mysli
 						 )
 				 )
 				 {
@@ -1058,6 +1092,16 @@
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_zgłoszenia
+					 		 ||	channel.id == channels.dzień_dobry
+					 		 ||	channel.id == channels.wlasna_tworczosc
+					 		 ||	channel.id == channels.propozycje_emotki
+					 		 ||	channel.id == channels.replay
+					 		 ||	channel.id == channels.jedzonko
+					 		 ||	channel.id == channels.selfie
+					 		 ||	channel.id == channels.pupile
+					 		 ||	channel.id == channels.outfit
+					 		 ||	channel.id == channels.tiktok
+					 		 ||	channel.id == channels.zlote_mysli
 						 )
 				 )
 				 {
@@ -1102,6 +1146,7 @@
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
@@ -1110,6 +1155,15 @@
 					 (		channel.id == channels.chat_ogolny
 						 ||	channel.id == channels.pomoc_supportu
 						 ||	channel.id == channels.izolatka_chat
+					 	 ||	channel.id == channels.wlasna_tworczosc
+						 ||	channel.id == channels.propozycje_emotki
+				 		 ||	channel.id == channels.replay
+					 	 ||	channel.id == channels.jedzonko
+					 	 ||	channel.id == channels.selfie
+					 	 ||	channel.id == channels.pupile
+					 	 ||	channel.id == channels.outfit
+					 	 ||	channel.id == channels.tiktok
+					 	 ||	channel.id == channels.zlote_mysli
 					 )
 						 reason = 'Niestosowne słownictwo';
 					 else
@@ -1189,6 +1243,7 @@
 							 ||	channel.id == channels.izolatka_chat
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
+							 ||	channel.id == channels.dzień_dobry
 						 )
 				 )
 				 {
