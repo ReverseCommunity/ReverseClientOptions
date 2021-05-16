@@ -1165,7 +1165,7 @@
 					 	 ||	channel.id == channels.tiktok
 					 	 ||	channel.id == channels.zlote_mysli
 					 )
-						 reason = 'Niestosowne słownictwo';
+						 reason = 'Niestosowna wiadomość';
 					 else
 					 if (channel.id == channels.media)
 						 reason = 'Niestosowna grafika';
