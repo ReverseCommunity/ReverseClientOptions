@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.5',
+			 version: '3.6',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'Update': 'Plugin działa na większej ilości kanałów'},
+			 improved: {'fixed': 'Plugin działaj plis'},
 		 },
  
 		 // milliseconds
@@ -1105,9 +1105,9 @@
 						 )
 				 )
 				 {
-					 let reason = 'Bezsensowna wiadomość';
+					 let reason = 'Niestosowna wiadomość';
 					 if (channel.id == channels.propozycje)
-						 reason = 'Bezsensowna propozycja';
+						 reason = 'Niestosowna propozycja';
  
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
 					 {
