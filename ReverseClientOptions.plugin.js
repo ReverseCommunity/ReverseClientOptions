@@ -32,7 +32,7 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.6',
+			 version: '3.6.0',
 		 },
  
 		 // added, fixed, improved
@@ -46,11 +46,11 @@
 		 {
 			 starting_delay:            250,
  
-			 tick_interval:            {min: 500, max: 1e3},
-			 sending_message_timeout:  {min: 2e3, max: 4e3},
-			 deleting_message_timeout: {min: 1e3, max: 2e3},
-			 sending_command_timeout:  {min: 2e3, max: 4e3},
-			 adding_reaction_timeout:  {min: 1e3, max: 2e3},
+			 tick_interval:            { min: 500, max: 1e3 },
+			 sending_message_timeout:  { min: 2e3, max: 4e3 },
+			 deleting_message_timeout: { min: 1e3, max: 2e3 },
+			 sending_command_timeout:  { min: 2e3, max: 4e3 },
+			 adding_reaction_timeout:  { min: 1e3, max: 2e3 },
 		 },
 	 };
  
@@ -722,7 +722,7 @@
 			 onLoad () {
 				this.defaults = {
 					general: {
-						copyRaw:			    {value: true, 			description: "Pozwala na kopiowanie tekstu wraz z formatowaniem"}
+						copyRaw:			    { value: true, 			description: "Pozwala na kopiowanie tekstu wraz z formatowaniem" }
 					},
 					places: {
 					},
