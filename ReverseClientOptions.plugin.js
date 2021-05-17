@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.6.0',
+			 version: '3.6.1',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'fixed': 'Plugin działaj plis'},
+			 improved: {'improved': 'Więcej warnów na kanałach'},
 		 },
  
 		 // milliseconds
@@ -1105,7 +1105,7 @@
 						 )
 				 )
 				 {
-					 let reason = 'Niestosowna wiadomość';
+					 let reason = 'Bezsensowna wiadomość';
 					 if (channel.id == channels.propozycje)
 						 reason = 'Niestosowna propozycja';
  
