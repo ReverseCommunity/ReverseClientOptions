@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.6.1',
+			 version: '3.6.2',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'improved': 'Więcej warnów na kanałach'},
+			 improved: {'fixed': 'Propozycje'},
 		 },
  
 		 // milliseconds
@@ -1095,6 +1095,7 @@
 					 		 ||	channel.id == channels.dzień_dobry
 					 		 ||	channel.id == channels.wlasna_tworczosc
 					 		 ||	channel.id == channels.propozycje_emotki
+					 		 ||	channel.id == channels.propozycje
 					 		 ||	channel.id == channels.replay
 					 		 ||	channel.id == channels.jedzonko
 					 		 ||	channel.id == channels.selfie
@@ -1106,8 +1107,7 @@
 				 )
 				 {
 					 let reason = 'Bezsensowna wiadomość';
-					 if (channel.id == channels.propozycje)
-						 reason = 'Niestosowna propozycja';
+
  
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
 					 {
