@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.6.2',
+			 version: '3.7.0',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'fixed': 'Propozycje'},
+			 improved: {'added': 'Komenda paula zniknęła; komenda imute i pban dodana'},
 		 },
  
 		 // milliseconds
@@ -234,32 +234,32 @@
 			 background: #fdcf26;
 		 }
  
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--paula'}
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--pban'}
 		 {
-			 color: #E04040;
+			 color: #f6712f;
 		 }
-		 #user-context-${config.info.name + '-Kary-UserContextMenu--paula'}.da-focused
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--pban'}.da-focused
 		 {
-			 color: #E0E0E0;
-			 background: #E04040;
+			 color: #D0D0D0;
+			 background: #f6712f;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--imute'}
 		 {
-			 color: #f6712f;
+			 color: #fdcf26;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--imute'}.da-focused
 		 {
-			 color: #D0D0D0;
-			 background: #f6712f;
+			 color: #606060;
+			 background: #fdcf26;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}
 		 {
-			 color: #f6712f;
+			 color: #E04040;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--ban'}.da-focused
 		 {
-			 color: #D0D0D0;
-			 background: #f6712f;
+			 color: #E0E0E0;
+			 background: #E04040;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--reklama'}
 		 {
@@ -607,6 +607,21 @@
 	 tasks.add_reaction = function(channel_id, message_id, reaction)
 	 {
 		 tasks.queue({action: 'add_reaction', channel_id: channel_id, message_id: message_id, reaction: reaction});
+	 }
+	 
+	  tasks.pban = function(user_id)
+	 {
+		 if (GBDFDB.UserUtils.can('BAN_MEMBERS'))
+			 tasks.execute_command(`/pban ${user_id}`);
+		 else
+		 {
+			 tasks.report_to_pban(user_id);
+		 }
+	 }
+ 
+	 tasks.report_to_pban = function(user_id)
+	 {
+		 tasks.send_message(channels.zgłoszenia, `pban ${user_id}`);
 	 }
  
 	 // ------------------------------------------------------------------------------------------------------------
@@ -1279,7 +1294,7 @@
 					 &&	!has_emoji(message.reactions, emojis.thumb_up.name)
 					 &&	!has_emoji(message.reactions, emojis.thumb_down.name)
 					 &&	message.content
-					 &&	!message.content.startsWith('paula ')
+					 &&	!message.content.startsWith('pban ')
 					 &&	!message.content.startsWith('imute ')
 					 &&	!message.content.startsWith('vmute ')
 				 )
@@ -1306,23 +1321,23 @@
 					 }));
 				 }
  
-				 // Zgłoszenia: Paula
+				 // Zgłoszenia: pban
 				 if
 				 (		!expanded
 					 &&	author.id != BDFDB.UserUtils.me.id
-					 &&	BDFDB.UserUtils.can('BAN_MEMBERS')
+					 &&	BDFDB.UserUtils.can('MUTE_MEMBERS')
 					 &&	channel.id == channels.zgłoszenia
 					 &&	'reactions' in message
 					 &&	!has_emoji(message.reactions, emojis.thumb_up.name)
 					 &&	!has_emoji(message.reactions, emojis.thumb_down.name)
 					 &&	message.content
-					 &&	message.content.startsWith('paula ')
+					 &&	message.content.startsWith('pban ')
 				 )
 				 {
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
 					 {
 						 key: 'mention',
-						 text: 'Paula',
+						 text: 'Profil Ban',
 						 className: config.info.name + '-MessageOptionToolbar-button',
 						 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Clickable,
 						 {
@@ -1341,11 +1356,14 @@
 					 }));
 				 }
  
-				 // Zgłoszenia: Ban (miękki)
+				 // Zgłoszenia: Mute (izolatka)
 				 if
 				 (		!expanded
 					 &&	author.id != BDFDB.UserUtils.me.id
-					 &&	BDFDB.UserUtils.can('BAN_MEMBERS')
+					 &&	(
+								 BDFDB.UserUtils.can('BAN_MEMBERS')
+							 ||	BDFDB.UserUtils.can('MUTE_MEMBERS')
+						 )
 					 &&	channel.id == channels.zgłoszenia
 					 &&	'reactions' in message
 					 &&	!has_emoji(message.reactions, emojis.thumb_up.name)
@@ -1357,7 +1375,7 @@
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
 					 {
 						 key: 'mention',
-						 text: 'Ban (miękki)',
+						 text: 'Mute (izolatka)',
 						 className: config.info.name + '-MessageOptionToolbar-button',
 						 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Clickable,
 						 {
@@ -1652,7 +1670,7 @@
 						 }
 					 }));
 				 }
- 
+				
 				 if (!BDFDB.UserUtils.can('MANAGE_MESSAGES', user.id))
 					 menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 						 label: 'Zaproś na Pomoc Supportu',
@@ -1912,7 +1930,6 @@
 										 setTimeout(function(){document.getElementById(config.info.name + '-vmute-reason').focus();}, 0);
 									 }
 								 }),
-								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-mutes-and-bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									label: 'Mute izolatka',
 									id: 'imute',
@@ -1940,13 +1957,13 @@
 												}),
 											]), {
 												danger: true,
-												confirmText: 'Ban',
+												confirmText: 'Mute',
 												cancelText: 'Anuluj',
 												onConfirm: function() {
 													let reason = document.getElementById(config.info.name + '-imute-reason').value;
 													if (!reason)
 													{
-														BdApi.showToast('Ban nieudany: Brak powodu.', {type: 'error'});
+														BdApi.showToast('Mute nieudany: Brak powodu.', {type: 'error'});
 														return;
 													}
 
@@ -1955,9 +1972,29 @@
 											}
 										);
 
-										setTimeout(function(){document.getElementById(config.info.name + '-ban-reason').focus();}, 0);
+										setTimeout(function(){document.getElementById(config.info.name + '-imute-reason').focus();}, 0);
 									}
 								}),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-mutes-and-bans'}),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+									 label: 'Profil Ban',
+									 id: 'pban',
+									 action: _ => {
+										 BdApi.showConfirmationModal(
+											 `Profil Ban`, action_popup__get_user_header(user.id, user.tag), {
+												 danger: true,
+												 confirmText: 'Profil Ban',
+												 cancelText: 'Anuluj',
+												 onConfirm: function() {
+													 tasks.execute_command(`/pban ${user.id}`);
+												 },
+											 }
+										 );
+ 
+										 setTimeout(function(){document.getElementById(config.info.name + '-pban-reason').focus();}, 0);
+									 }
+								 }),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-bans-and-thematic_bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									 label: 'Ban',
 									 id: 'ban',
@@ -2003,7 +2040,6 @@
 										 setTimeout(function(){document.getElementById(config.info.name + '-ban-reason').focus();}, 0);
 									 }
 								 }),
-								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.FormComponents.FormDivider, {id: 'separator-between-bans-and-thematic_bans'}),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									 label: 'Reklama',
 									 id: 'reklama',
@@ -2040,24 +2076,7 @@
 										 setTimeout(function(){document.getElementById(config.info.name + '-multikonto-reason').focus();}, 0);
 									 }
 								 }),
-								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-									 label: 'Paula',
-									 id: 'paula',
-									 action: _ => {
-										 BdApi.showConfirmationModal(
-											 `Paula`, action_popup__get_user_header(user.id, user.tag), {
-												 danger: true,
-												 confirmText: 'Paula',
-												 cancelText: 'Anuluj',
-												 onConfirm: function() {
-													 tasks.execute_command(`/paula ${user.id}`);
-												 },
-											 }
-										 );
- 
-										 setTimeout(function(){document.getElementById(config.info.name + '-paula-reason').focus();}, 0);
-									 }
-								 }),
+								 
 							 ],
 						 })
 					 }));
