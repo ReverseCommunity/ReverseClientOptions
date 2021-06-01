@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.0',
+			 version: '3.7.1',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'added': 'Komenda paula zniknęła; komenda imute i pban dodana'},
+			 improved: {'fixed': 'Błędy'},
 		 },
  
 		 // milliseconds
@@ -561,7 +561,7 @@
  
 	 tasks.imute = function(user_id, reason)
 	 {
-		 if (GBDFDB.UserUtils.can('BAN_MEMBERS'))
+		 if (GBDFDB.UserUtils.can('MUTE_MEMBERS'))
 			 tasks.execute_command(`/imute ${user_id} ${reason}`);
 		 else
 		 {
