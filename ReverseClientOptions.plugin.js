@@ -32,7 +32,7 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.1',
+			 version: '3.7.2',
 		 },
  
 		 // added, fixed, improved
@@ -1325,7 +1325,7 @@
 				 if
 				 (		!expanded
 					 &&	author.id != BDFDB.UserUtils.me.id
-					 &&	BDFDB.UserUtils.can('MUTE_MEMBERS')
+					 &&	BDFDB.UserUtils.can('BAN_MEMBERS')
 					 &&	channel.id == channels.zgłoszenia
 					 &&	'reactions' in message
 					 &&	!has_emoji(message.reactions, emojis.thumb_up.name)
