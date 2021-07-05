@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.2',
+			 version: '3.7.3',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'fixed': 'Błędy'},
+			 improved: {'added': 'Emotka OK jak na pomocy supportu na kanale do zrobienia'},
 		 },
  
 		 // milliseconds
@@ -113,7 +113,7 @@
 	 const channels =
 	 {
 		 // Półbogowie
-		 do_zrobienia: '781584196178280460',
+		 do_zrobienia: '831527571459407883',
  
 		 // Rekrutacja
 		 podania: '781584198476759040',
