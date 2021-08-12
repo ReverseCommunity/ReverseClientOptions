@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.3',
+			 version: '3.7.4',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'added': 'Emotka OK jak na pomocy supportu na kanale do zrobienia'},
+			 improved: {'added': 'Opcje dla kanału dyskusje'},
 		 },
  
 		 // milliseconds
@@ -120,6 +120,7 @@
  
 		 // Cafeteria
 		 chat_ogolny: '794692595107758121',
+		 dyskusje: '875376037847003187',
 		 dzień_dobry: '835083082121216030',
 		 szukanie_druzyny: '831335672589058079',
 		 szukanie_druzyny_18: '831299543222976542',
@@ -317,16 +318,6 @@
 		 {
 			color: #606060;
 			background: #fbd82f; 
-		 }
- 
-		 #user-context-${config.info.name + '-Menu-UserContextMenu--move_craft'}
-		 {
-			 color: #f6712f;
-		 }
-		 #user-context-${config.info.name + '-Menu-UserContextMenu--move_craft'}.da-focused
-		 {
-			 color: #585858;
-			 background: #f6712f;
 		 }
  
 		 #user-context-${config.info.name + '-Menu-UserContextMenu--stat'}
@@ -1118,6 +1109,7 @@
 					 		 ||	channel.id == channels.outfit
 					 		 ||	channel.id == channels.tiktok
 					 		 ||	channel.id == channels.zlote_mysli
+					 		 ||	channel.id == channels.dyskusje
 						 )
 				 )
 				 {
@@ -1162,6 +1154,7 @@
 							 ||	channel.id == channels.liga_chat
 							 ||	channel.id == channels.liga_media
 							 ||	channel.id == channels.dzień_dobry
+					 		 ||	channel.id == channels.dyskusje
 						 )
 				 )
 				 {
@@ -1657,16 +1650,6 @@
 						 id: 'move',
 						 action: _ => {
 							 tasks.execute_command(`/move ${user.id}`);
-						 }
-					 }));
-				 }
- 
-				 if (user.id != BDFDB.UserUtils.me.id) {
-					 menuEntries.push(BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						 label: 'Przenieś na Reversecraft',
-						 id: 'move_craft',
-						 action: _ => {
-							 tasks.execute_command(`/move ${user.id} craft`);
 						 }
 					 }));
 				 }
