@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.4',
+			 version: '3.7.5',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'added': 'Opcje dla kanału dyskusje'},
+			 improved: {'added': 'Niestosowna wiadomosc na selfie/outfit'},
 		 },
  
 		 // milliseconds
@@ -1144,34 +1144,43 @@
 					 &&	author.id != BDFDB.UserUtils.me.id
 					 &&	!BDFDB.UserUtils.can('MANAGE_MESSAGES', author.id)
 					 &&	(
-								 channel.id == channels.chat_ogolny
+								channel.id == channels.chat_ogolny
 							 ||	channel.id == channels.szukanie_druzyny
 							 ||	channel.id == channels.szukanie_druzyny_18
 							 ||	channel.id == channels.media
 							 ||	channel.id == channels.propozycje
 							 ||	channel.id == channels.pomoc_supportu
 							 ||	channel.id == channels.izolatka_chat
-							 ||	channel.id == channels.liga_chat
-							 ||	channel.id == channels.liga_media
-							 ||	channel.id == channels.dzień_dobry
 					 		 ||	channel.id == channels.dyskusje
+						 	 ||	channel.id == channels.wlasna_tworczosc
+							 ||	channel.id == channels.propozycje_emotki
+				 			 ||	channel.id == channels.replay
+						 	 ||	channel.id == channels.jedzonko
+						 	 ||	channel.id == channels.selfie
+							 ||	channel.id == channels.pupile
+						 	 ||	channel.id == channels.outfit
+					 		 ||	channel.id == channels.zlote_mysli
 						 )
 				 )
 				 {
 					 let reason = 'Niestosowna wiadomość';
 					 if
-					 (		channel.id == channels.chat_ogolny
-						 ||	channel.id == channels.pomoc_supportu
-						 ||	channel.id == channels.izolatka_chat
-					 	 ||	channel.id == channels.wlasna_tworczosc
-						 ||	channel.id == channels.propozycje_emotki
-				 		 ||	channel.id == channels.replay
-					 	 ||	channel.id == channels.jedzonko
-					 	 ||	channel.id == channels.selfie
-					 	 ||	channel.id == channels.pupile
-					 	 ||	channel.id == channels.outfit
-					 	 ||	channel.id == channels.tiktok
-					 	 ||	channel.id == channels.zlote_mysli
+					 (			channel.id == channels.chat_ogolny
+							 ||	channel.id == channels.szukanie_druzyny
+							 ||	channel.id == channels.szukanie_druzyny_18
+							 ||	channel.id == channels.media
+							 ||	channel.id == channels.propozycje
+							 ||	channel.id == channels.pomoc_supportu
+							 ||	channel.id == channels.izolatka_chat
+					 		 ||	channel.id == channels.dyskusje
+						 	 ||	channel.id == channels.wlasna_tworczosc
+							 ||	channel.id == channels.propozycje_emotki
+				 			 ||	channel.id == channels.replay
+						 	 ||	channel.id == channels.jedzonko
+						 	 ||	channel.id == channels.selfie
+							 ||	channel.id == channels.pupile
+						 	 ||	channel.id == channels.outfit
+					 		 ||	channel.id == channels.zlote_mysli
 					 )
 						 reason = 'Niestosowna wiadomość';
 					 else
