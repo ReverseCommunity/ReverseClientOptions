@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.5',
+			 version: '3.7.6',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'added': 'Niestosowna wiadomosc na selfie/outfit'},
+			 improved: {'added': 'Nowe powody'},
 		 },
  
 		 // milliseconds
@@ -910,7 +910,7 @@
 							 onClick: _ =>
 							 {
 								 tasks.delete_message(channel.id, message.id);
-								 tasks.twarn(author.id, `Niestosowanie się do wzoru na kanale <#${channel.id}>.`);
+								 tasks.twarn(author.id, `Niestosowanie się do wzoru na kanale <#${channel.id}> (wzór znajduje się w przypiętej wiadomości na kanale).`);
 							 },
 							 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon,
 							 {
@@ -945,7 +945,7 @@
 							 onClick: _ =>
 							 {
 								 tasks.delete_message(channel.id, message.id);
-								 tasks.twarn(author.id, `Wiadomość niezwiązana z szukaniem drużyny na kanale <#${channel.id}>.`);
+								 tasks.twarn(author.id, `Wiadomość niezwiązana z szukaniem drużyny na kanale <#${channel.id}>. Na tym kanale wyłącznie szukamy osób do wspólnej gry.`);
 							 },
 							 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon,
 							 {
@@ -983,7 +983,7 @@
 							 onClick: _ =>
 							 {
 								 tasks.delete_message(channel.id, message.id);
-								 tasks.twarn(author.id, `Szukanie drużyny na kanale <#${channel.id}>.`);
+								 tasks.twarn(author.id, `Szukanie drużyny na kanale <#${channel.id}>. Aby znaleźć osoby do wspólnej gry użyj tych kanałów: among - <#831335672589058079> | among mody - <#839585256805236748> lub inne gry - <#832000036853383236>`);
 							 },
 							 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon,
 							 {
@@ -1088,7 +1088,7 @@
 					 }));
 				 }
  
-				 // Bezsensowna wiadomość
+				 // Wiadomość nie na temat
 				 if
 				 (		!expanded
 					 &&	author.id != BDFDB.UserUtils.me.id
@@ -1110,10 +1110,11 @@
 					 		 ||	channel.id == channels.tiktok
 					 		 ||	channel.id == channels.zlote_mysli
 					 		 ||	channel.id == channels.dyskusje
+					 		 ||	channel.id == channels.media
 						 )
 				 )
 				 {
-					 let reason = 'Bezsensowna wiadomość';
+					 let reason = 'Nie na temat';
 
  
 					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
@@ -1127,7 +1128,7 @@
 							 onClick: _ =>
 							 {
 								 tasks.delete_message(channel.id, message.id);
-								 tasks.twarn(author.id, `${reason} na kanale <#${channel.id}>.`);
+								 tasks.twarn(author.id, `Wiadomość niezwiązana z tematem kanału <#${channel.id}>.`);
 							 },
 							 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon,
 							 {
@@ -1211,39 +1212,7 @@
 						 })
 					 }));
 				 }
- 
-				 // Niepoprawne użycie kanału #media
-				 if
-				 (		!expanded
-					 &&	author.id != BDFDB.UserUtils.me.id
-					 &&	!BDFDB.UserUtils.can('MANAGE_MESSAGES', author.id)
-					 &&	(
-								 channel.id == channels.media
-							 ||	channel.id == channels.liga_media
-						 )
-				 )
-				 {
-					 children.unshift(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.TooltipContainer,
-					 {
-						 key: 'mention',
-						 text: 'Niepoprawne użycie kanału',
-						 className: config.info.name + '-MessageOptionToolbar-button',
-						 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Clickable,
-						 {
-							 className: BDFDB.disCN.messagetoolbarbutton,
-							 onClick: _ =>
-							 {
-								 tasks.delete_message(channel.id, message.id);
-								 tasks.twarn(author.id, `Niepoprawne użycie kanału <#${channel.id}>.`);
-							 },
-							 children: BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon,
-							 {
-								 className: BDFDB.disCN.messagetoolbaricon,
-								 iconSVG: images.no_media
-							 })
-						 })
-					 }));
-				 }
+
  
 				 // Reklama
 				 if
