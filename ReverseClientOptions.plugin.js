@@ -32,13 +32,13 @@
 			 author: 'Benio, matiqo15, OLO, Specou',
 			 authorId: '231850998279176193, 490431174322159626, 543819194656096276, 299229709370392577',
 			 invite: 'reversecommunity',
-			 version: '3.7.6',
+			 version: '3.7.7',
 		 },
  
 		 // added, fixed, improved
 		 changeLog:
 		 {
-			 improved: {'added': 'Nowe powody'},
+			 improved: {'added': 'Scam in kary'},
 		 },
  
 		 // milliseconds
@@ -270,6 +270,15 @@
 		 {
 			 color: #E0E0E0;
 			 background: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--scam'}
+		 {
+			 color: #E04040;
+		 }
+		 #user-context-${config.info.name + '-Kary-UserContextMenu--scam'}.da-focused
+		 {
+	 		 color: #E0E0E0;
+		 	 background: #E04040;
 		 }
 		 #user-context-${config.info.name + '-Kary-UserContextMenu--multikonto'}
 		 {
@@ -2018,6 +2027,24 @@
  
 										 setTimeout(function(){document.getElementById(config.info.name + '-reklama-reason').focus();}, 0);
 									 }
+								 }),
+								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+								 	label: 'Scam',
+								 	id: 'scam',
+								 	action: _ => {
+								 		BdApi.showConfirmationModal(
+								 			`Scam`, action_popup__get_user_header(user.id, user.tag), {
+								 				danger: true,
+								 				confirmText: 'Ban',
+								 				cancelText: 'Anuluj',
+								 				onConfirm: function() {
+								 					tasks.ban(user.id, 'Scam')
+								 				},
+								 			}
+								 		);
+ 
+								 		setTimeout(function(){document.getElementById(config.info.name + '-scam-reason').focus();}, 0);
+								 	}
 								 }),
 								 BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
 									 label: 'Multikonto',
